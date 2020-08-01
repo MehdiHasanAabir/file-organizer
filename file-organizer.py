@@ -54,8 +54,3 @@ def sprucer(path):
 
 sprucer(path1)
 sprucer(path2)
-# path = f'{path2}/'
-# os.chdir(path)
-# print(os.listdir())
-
-#print([file.endswith('.docx') for file in os.listdir()])
