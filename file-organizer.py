@@ -9,8 +9,10 @@ path3 = 'C:/Users/mhasa/Desktop/projects/New folder/'
 def duplicateRename(path, fileName, folderName):
     #print(fileName)
     splitted = fileName.split('.')
-    theTime = datetime.datetime.now()    
-    newName = splitted[0] + theTime + f'.{splitted[1]}'
+    theTime = str(datetime.datetime.now())
+    theTime = theTime.replace(' ', '-')
+    theTime = theTime.replace(':', '-')
+    newName = splitted[0] + theTime + '.' + splitted[1]
     return os.rename(path + fileName, path + folderName + '/' + newName)
 
 
