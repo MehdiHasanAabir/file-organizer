@@ -21,11 +21,26 @@ def sprucer(path):
 
     directoryDoc = path + 'Documents/'
     directoryImg = path + 'img/'
+    directoryZip = path + 'Compressed/'
+    directoryPs = path + 'ps/'
+    directoryAi = path + 'ai/'
+
+
+
     if not os.path.exists(directoryDoc):
         os.mkdir(directoryDoc)
 
     if not os.path.exists(directoryImg):
         os.mkdir(directoryImg)
+
+    if not os.path.exists(directoryZip):
+        os.mkdir(directoryZip)
+
+    if not os.path.exists(directoryPs):
+        os.mkdir(directoryPs)
+
+    if not os.path.exists(directoryAi):
+        os.mkdir(directoryAi)
 
 
     for file in os.listdir():
@@ -52,6 +67,12 @@ def sprucer(path):
                 os.rename(path + file, path + 'ps/' + file)
             except FileExistsError:
                 duplicateRename(path, file, 'ps')
+
+        elif file.endswith('.zip') or file.endswith('.rar'):
+            try:
+                os.rename(path + file, path + 'Compressed/' + file)
+            except FileExistsError:
+                duplicateRename(path, file, 'Compressed')
 
 
 sprucer(path1)
