@@ -4,6 +4,7 @@ import datetime
 path1 = 'C:/Users/mhasa/Desktop/'
 path2 = 'C:/Users/mhasa/Downloads/'
 path3 = 'C:/Users/mhasa/Desktop/projects/New folder/'
+path4 = 'D:/'
 
 
 def duplicateRename(path, fileName, folderName):
@@ -18,7 +19,6 @@ def duplicateRename(path, fileName, folderName):
 
 def sprucer(path):
     os.chdir(path)
-
     directoryDoc = path + 'Documents/'
     directoryImg = path + 'img/'
     directoryZip = path + 'Compressed/'
@@ -26,49 +26,42 @@ def sprucer(path):
     directoryAi = path + 'ai/'
 
 
-
-    if not os.path.exists(directoryDoc):
-        os.mkdir(directoryDoc)
-
-    if not os.path.exists(directoryImg):
-        os.mkdir(directoryImg)
-
-    if not os.path.exists(directoryZip):
-        os.mkdir(directoryZip)
-
-    if not os.path.exists(directoryPs):
-        os.mkdir(directoryPs)
-
-    if not os.path.exists(directoryAi):
-        os.mkdir(directoryAi)
-
-
     for file in os.listdir():
         if file.endswith('.doc') or file.endswith('.docx') or file.endswith('.pdf') or file.endswith('.csv') or file.endswith('.ppt') or file.endswith('.pptx') or file.endswith('.xlsx'):
+            if not os.path.exists(directoryDoc):
+                os.mkdir(directoryDoc)
             try:
                 os.rename(path + file, path + 'Documents/' + file)
             except FileExistsError:
                 duplicateRename(path, file, 'Documents')
 
         elif file.endswith('.png') or file.endswith('.jpg') or file.endswith('.jpeg') or file.endswith('.jfif'):
+            if not os.path.exists(directoryImg):
+                os.mkdir(directoryImg)
             try:
                 os.rename(path + file, path + 'img/' + file)
             except FileExistsError:
                 duplicateRename(path, file, 'img')
 
         elif file.endswith('.ai'):
+            if not os.path.exists(directoryAi):
+                os.mkdir(directoryAi)
             try:
                 os.rename(path + file, path + 'ai/' + file)
             except FileExistsError:
                 duplicateRename(path, file, 'ai')
 
         elif file.endswith('.psd'):
+            if not os.path.exists(directoryPs):
+                os.mkdir(directoryPs)
             try:
                 os.rename(path + file, path + 'ps/' + file)
             except FileExistsError:
                 duplicateRename(path, file, 'ps')
 
         elif file.endswith('.zip') or file.endswith('.rar'):
+            if not os.path.exists(directoryZip):
+                os.mkdir(directoryZip)
             try:
                 os.rename(path + file, path + 'Compressed/' + file)
             except FileExistsError:
@@ -76,4 +69,4 @@ def sprucer(path):
 
 
 sprucer(path1)
-sprucer(path2)
+sprucer(path4)
